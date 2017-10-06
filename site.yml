@@ -4,6 +4,7 @@
   roles:
     - kernel
     - limits
+    - permission
     - { role: williamyeh.fluentd }
   vars:
     tdagent_plugins:

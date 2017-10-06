@@ -1,0 +1,8 @@
+---
+- name: change file group and mode
+  file:
+    path: "{{ item.path }}"
+    group: td-agent
+    mode: 0660
+  with_items:
+    - "{{ tdagent_logs }}"
