@@ -1,8 +1,19 @@
 - hosts: all
   remote_user: ec2-user
   become: yes
-  vars:
   roles:
     - kernel
     - limits
     - { role: williamyeh.fluentd }
+  vars:
+    tdagent_plugins:
+      - fluent-plugin-forest
+      - fluent-plugin-s3
+    # copy through Ansible's template system
+    tdagent_conf_template: "roles/williamyeh.fluentd/templates/td-agent.conf.j2"
+    # logs
+    s3_bucket_name: "test"
+    tdagent_logs:
+      - { format: syslog, name: messages, path: /var/log/messages, s3_path: path/to/s3/messages, buffer_path: /var/log/td-agent/buffer/buffer-syslog-messages }
+      - { format: syslog, name: maillog,  path: /var/log/maillog,  s3_path: path/to/s3/maillog,  buffer_path: /var/log/td-agent/buffer/buffer-syslog-maillog }
+      - { format: syslog, name: secure,   path: /var/log/secure,   s3_path: path/to/s3/secure,   buffer_path: /var/log/td-agent/buffer/buffer-syslog-secure }

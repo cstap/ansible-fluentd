@@ -1,0 +1,37 @@
+#
+# td-agent.conf
+#
+{% for log in tdagent_logs %}
+<source>
+  @type tail
+  format {{ log.format }}
+  path {{ log.path }}
+  pos_file /var/log/td-agent/s3.{{ log.format }}.{{ log.name }}.pos
+  tag s3.{{ log.format }}.{{ log.name }}
+</source>
+
+<filter s3.{{ log.format }}.{{ log.name }}>
+  @type record_transformer
+  <record>
+    s3.{{ log.format }}.{{ log.name }} ${hostname}
+  </record>
+</filter>
+
+{% endfor %}
+
+<match s3.**>
+  type forest
+  subtype s3
+  <template>
+    s3_bucket {{ s3_bucket_name }}
+    time_slice_format %Y%m%d
+    time_slice_wait 10m
+    buffer_chunk_limit 256m
+  </template>
+  {% for log in tdagent_logs %}
+  <case *.{{ log.format }}.{{ log.name }}>
+    path {{ log.s3_path }}
+    buffer_path {{ log.buffer_path }}
+  </case>
+  {% endfor %}
+</match>
