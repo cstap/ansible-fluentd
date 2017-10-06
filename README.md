@@ -21,7 +21,9 @@ vars:
 
 設定テンプレート
 
-- `roles/williamyeh.fluentd/templates/td-agent.conf.j2`
+```
+roles/williamyeh.fluentd/templates/td-agent.conf.j2
+```
 
 ### Deploy
 
