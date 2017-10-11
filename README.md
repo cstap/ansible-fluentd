@@ -8,7 +8,8 @@
 
 ## Setup
 
-- `production` の ip アドレス変更
+`production` の ip アドレス変更
+`site.yml` のログパラメータ変更
 
 ## Usage
 
