@@ -4,8 +4,8 @@
   roles:
     - kernel
     - limits
-    - permission
     - { role: williamyeh.fluentd }
+    - permission
   vars:
     tdagent_plugins:
       - fluent-plugin-forest
