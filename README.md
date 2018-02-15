@@ -8,8 +8,11 @@
 
 ## Setup
 
+- Ansible の実行に踏み台サーバーを利用したい場合 `ssh_config` ファイルを生成する
 - `production` の ip アドレス変更
-- `site.yml` のログパラメータ変更
+- `site.yml` のバケット名変更
+- `site.yml` のログ情報の変更
+
 
 ## Usage
 
@@ -29,7 +32,7 @@ roles/williamyeh.fluentd/templates/td-agent.conf.j2
 ### Deploy
 
 ```
-$ ansible-playbook -i production site.yml --private-key="~/.ssh/priv_key.pem"
+$ ansible-playbook -v -i production site.yml --private-key="~/.ssh/priv_key.pem"
 ```
 
 ## Install williamyeh.fluentd from ansible-galaxy if needed
