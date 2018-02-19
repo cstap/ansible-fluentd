@@ -13,12 +13,12 @@
     # copy through Ansible's template system
     tdagent_conf_template: "roles/williamyeh.fluentd/templates/td-agent.conf.j2"
     # logs
-    s3_bucket_name: "test"
+    s3_bucket_name: "product-log"
     tdagent_logs:
       # 必要なものだけコメント外す / 追加したいログがあれば template を参考にパラメータを追加する
       #      - { format: syslog, name: messages,     path: /var/log/messages,                s3_path: path/to/s3/messages/,     buffer_path: /var/log/td-agent/buffer/buffer-syslog-messages }
       #      - { format: syslog, name: maillog,      path: /var/log/maillog,                 s3_path: path/to/s3/maillog/,      buffer_path: /var/log/td-agent/buffer/buffer-syslog-maillog }
       #      - { format: syslog, name: secure,       path: /var/log/secure,                  s3_path: path/to/s3/secure/,       buffer_path: /var/log/td-agent/buffer/buffer-syslog-secure }
-      #      - { format: none,   name: nginx_access, path: /var/log/nginx/n_form.access.log, s3_path: path/to/s3/nginx_access/, buffer_path: /var/log/td-agent/buffer/buffer-none-nginx-access }
-      #      - { format: none,   name: nginx_error,  path: /var/log/nginx/n_form.error.log,  s3_path: path/to/s3/nginx_error/,  buffer_path: /var/log/td-agent/buffer/buffer-none-nginx-error }
+      #      - { format: none,   name: nginx_access, path: /var/log/nginx/access.log,        s3_path: path/to/s3/nginx_access/, buffer_path: /var/log/td-agent/buffer/buffer-none-nginx-access }
+      #      - { format: none,   name: nginx_error,  path: /var/log/nginx/error.log,         s3_path: path/to/s3/nginx_error/,  buffer_path: /var/log/td-agent/buffer/buffer-none-nginx-error }
       #      - { format: none,   name: rkhunter,     path: /var/log/rkhunter/rkhunter.log,   s3_path: path/to/s3/rkhunter/,     buffer_path: /var/log/td-agent/buffer/buffer-none-rkhunter }
